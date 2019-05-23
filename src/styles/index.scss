@@ -1,0 +1,7 @@
+@import './var.scss';
+
+.test {
+  color:$red;
+  width: 150px;
+  @include ellipsis; 
+}

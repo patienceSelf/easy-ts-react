@@ -1,0 +1,19 @@
+{
+  "extends":[
+    "tslint:recommended",
+    "tslint-react"
+  ],
+  "rules":{
+    "no-console":false,
+    "whitespace":[true, "check-branch", "check-decl", "check-operator", "check-module"],
+    // "trailing-comma":[false, {
+    //   "multiline": "always",
+    //   "singleline": "never"
+    // }],
+    "member-access":false,
+    "type-literal-delimiter":true
+
+    // 引入顺序， import顺序
+  }
+  
+}

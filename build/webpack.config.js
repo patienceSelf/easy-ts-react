@@ -1,37 +1,28 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const plugins = require('./plugin');
+const { resolve } = require('./utils');
+const jsRules = require('./rules/jsRules');
+const styleRules = require('./rules/styleRules');
 
 module.exports = {
+  mode: 'production',
   entry: {
-    app: path.join(__dirname, './../', 'src/index.tsx'),
+    app: resolve('src/index.tsx')
   },
   output: {
-    path: path.join(__dirname, './../','dist'),
+    path: resolve('dist'),
     filename: '[name].js'
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx$/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader',
-            options: {
-
-            }
-          }
-        ]
-      }
-    ]
+    rules: [...jsRules, ...styleRules]
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'build/tpl/index.html'
-    })
-  ],
+  plugins: [...plugins],
 
   resolve: {
-    extensions: ['.ts', '.tsx','.js','.jsx']
+    extensions: ['.ts', '.tsx','.js','.jsx'],
+    alias: {
+      "@components": resolve('src/components')
+    },
+    
   }
 }
