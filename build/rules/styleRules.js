@@ -1,11 +1,14 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolve } = require('../utils');
+
 
 module.exports = [
   {
     test: /\.scss$/,
     include: [resolve('src')],
     use: [
-      'style-loader',
+      // 'style-loader',
+      MiniCssExtractPlugin.loader,
       {
         loader:'typings-for-css-modules-loader',
         options: {
